@@ -1,28 +1,27 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a demo using Rails as the backend and serving an AmpersandJS client.
 
-Things you may want to cover:
+The intent of this was to figure out the lightest way to integrate NPM packages into the Asset Pipeline, have server precompiled template functions, and instantiate one main view with AmpersandJS.
 
-* Ruby version
+The following are configured:
 
-* System dependencies
+* Browserify to utilize NPM packages
 
-* Configuration
+* EJS for server precompiled client side templating. (Instead of jade/templatizer, etc.)
 
-* Database creation
+Things I learned:
 
-* Database initialization
+* Don't use asset pipeline require statements (including tree directives) for files that should be used with commonJS style statements. This makes sense from an organization perspective as well.
 
-* How to run the test suite
+* Looks like ruby-haml-js could easily be used as an alternative to EJS.
 
-* Services (job queues, cache servers, search engines, etc.)
+I prefer fewer dependencies and light code, so:
 
-* Deployment instructions
+* jQuery has been disabled in the Asset Pipeline (but the gem is still included). It was not needed for the Hello World example.
 
-* ...
+* The Rails layout (js.html.erb) has been stripped to the bare essentials.
 
+Linux Note:
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* If you installed node via apt-get and/or your node install is on your path as nodejs, then browserify-rails chokes. I fixed the issue by a simple symlink pointing node to nodejs on my path.
